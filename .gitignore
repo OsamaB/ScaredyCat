@@ -1,0 +1,10 @@
+# Mac DS
+.DS_Store
+
+# Java class-files
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
