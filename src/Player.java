@@ -10,10 +10,10 @@ public class Player {
 	}
 	
 	public void getName(){
-		System.out.println(name);
+		System.out.println("Player name: " + name);
 	}
 	
 	public void getAge(){
-		System.out.println(age);
+		System.out.println("Player age: " + age);
 	}
 }

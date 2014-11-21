@@ -49,8 +49,7 @@ public class CardHandler {
 	
 	public void getCards(){
 		for(int i = 0;i<deck.length;i++){
-			System.out.println("i: " + i);
-			System.out.println(deck[i]);
+			System.out.println("index: " + i + ", Value: " + deck[i]);
 		}
 	}
 }
