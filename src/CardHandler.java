@@ -1,10 +1,12 @@
 
 public class CardHandler {
 	private int[] deck = new int[49];
+	private int card = 0;
 	
+	//Construct how many of each bird card should be used in the deck
 	CardHandler(int a, int b, int c, int d, int e, int f){
 		
-		int card = 0;
+		card = 0;
 		//3 cat-cards (-1)
 		for(int i = 0;i<3;i++){
 			deck[card] = -1;
@@ -47,7 +49,7 @@ public class CardHandler {
 		}
 	}
 	
-	private void shuffleCards(){
+	public void shuffleCards(){
 		for(int i = 0; i < deck.length; i++ ){
 			int otherCard = (int) (Math.random() * deck.length);
 	        int temporary = deck[i];
@@ -57,9 +59,20 @@ public class CardHandler {
 	}
 	
 	public void getCards(){
-		shuffleCards();
 		for(int i = 0;i<deck.length;i++){
 			System.out.println("index: " + i + ", Value: " + deck[i]);
 		}
+	}
+	
+	public int pickCard(){
+		card = 0;
+		for(int i = 0;i<deck.length;i++){
+			if(deck[i] != -2){
+				card = deck[i];
+				deck[i] = -2;
+				break;
+			}
+		}
+		return card;
 	}
 }
