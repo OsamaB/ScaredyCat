@@ -5,8 +5,7 @@ public class CardHandler {
 	
 	//Construct how many of each bird card should be used in the deck
 	CardHandler(int a, int b, int c, int d, int e, int f){
-		
-		card = 0;
+
 		//3 cat-cards (-1)
 		for(int i = 0;i<3;i++){
 			deck[card] = -1;
