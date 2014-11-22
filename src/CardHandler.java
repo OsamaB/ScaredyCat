@@ -47,7 +47,17 @@ public class CardHandler {
 		}
 	}
 	
+	private void shuffleCards(){
+		for(int i = 0; i < deck.length; i++ ){
+			int otherCard = (int) (Math.random() * deck.length);
+	        int temporary = deck[i];
+	        deck[i] = deck[otherCard];
+	        deck[otherCard] = temporary;
+		}
+	}
+	
 	public void getCards(){
+		shuffleCards();
 		for(int i = 0;i<deck.length;i++){
 			System.out.println("index: " + i + ", Value: " + deck[i]);
 		}
