@@ -29,6 +29,8 @@ public class Game {
 				input = console.getInput();
 				if(input == "Exit"){
 					System.exit(0);
+				}else if(input == "Restart"){
+					start();
 				}
 			}while(input != "Next");
 			card = ch.pickCard();

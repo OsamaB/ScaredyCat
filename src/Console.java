@@ -11,7 +11,7 @@ public class Console {
 		System.out.print("What is your name?: ");
 		name = getInput();
 		
-		if(name.trim() == null){
+		if(name == null){
 			return getName();
 		}else{
 			return name;
@@ -46,13 +46,15 @@ public class Console {
 			i ++;
 		}
 		
-		String input = String.valueOf(ch);
+		String input = String.valueOf(ch).trim();
 		if(ch[0] == '\n'){
 			return "Next";
-		}else if(input.trim().equalsIgnoreCase("x") || input.trim().equalsIgnoreCase("exit")){
+		}else if(input.equalsIgnoreCase("x") || input.equalsIgnoreCase("exit")){
 			return "Exit";
+		}else if(input.equalsIgnoreCase("r") || input.equalsIgnoreCase("restart")){
+			return "Restart";
 		}else{
-			return input.trim();
+			return input;
 		}
 		
 	}

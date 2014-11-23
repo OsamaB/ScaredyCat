@@ -33,7 +33,9 @@ public class Player {
 	
 	public void printCards(){
 		for(int card:cards){
-			System.out.print(card + ", ");
+			if(card != -2){
+				System.out.print(card + ", ");
+			}
 		}
 		System.out.println("\n");
 	}
