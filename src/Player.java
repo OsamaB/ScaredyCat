@@ -33,7 +33,8 @@ public class Player {
 	
 	public void printCards(){
 		for(int card:cards){
-			System.out.println(card);
+			System.out.print(card + ", ");
 		}
+		System.out.println();
 	}
 }
