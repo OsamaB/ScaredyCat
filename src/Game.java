@@ -6,43 +6,58 @@ public class Game {
 	//player to handle which player's turn it is
 	int card,scarecrow = 0,turn = 0;
 	public void start() throws java.io.IOException{
-		System.out.println("--Game Started");
 		console.print("Welcome to Scaredy Cat game!");
+		
 		Player p1 = new Player(console.getName(), console.getAge());
 		Player p2 = new Player(console.getName(), console.getAge());
-		/*p1.getName();
-		p1.getAge();
-		p2.getName();
-		p2.getAge();*/
+		
+		//Check if player2 is younger than player1, if true, let player2 start the game
+		if(p2.getAge() < p1.getAge()){
+			turn = 1;
+		}
+		
 		ch.shuffleCards();
 		while(scarecrow < 6){
-			console.print("Press enter to pick a card");
+			if(turn%2 == 0){
+				console.print(p1.getName() + ", press enter to pick a card");
+			}else{
+				console.print(p2.getName() + ", press enter to pick a card");
+			}
+			
 			if(console.getInput() == "Next"){
 				card = ch.pickCard();
 			}
+			
 			if(card == 0){
 				scarecrow++;
 				System.out.println("ScareCrow was picked up! ScareCrows at the table: " + scarecrow);
+				System.out.println();
 			}else if(card == -1){
 				System.out.println("Return your cards");
+				System.out.println();
 			}else{
 				if(turn%2 == 0){
 					p1.addCard(card);
-					console.print("Player 1's cards");
+					console.print(p1.getName() + "'s cards:");
 					p1.printCards();
 				}else{
 					p2.addCard(card);
-					console.print("Player 2's cards");
+					console.print(p2.getName() + "'s cards:");
 					p2.printCards();
 				}
 			}
+			
 			turn++;
 		}
 		
-		//System.out.println("Player 1 cards:");
-		//p1.printCards();
-		//System.out.println("Player 2 cards:");
-		//p2.printCards();
+		if(p1.getPoints() > p2.getPoints()){
+			console.print(p1.getName() + " won the game!");
+		}else if(p1.getPoints() < p2.getPoints()){
+			console.print(p2.getName() + " won the game!");
+		}else{
+			console.print("Draw!");
+		}
 		
-	}
-}
+	}//start()
+	
+}//Class

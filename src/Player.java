@@ -14,12 +14,12 @@ public class Player {
 		}
 	}
 
-	public void getName(){
-		System.out.println("Player name: " + name);
+	public String getName(){
+		return name;
 	}
 	
-	public void getAge(){
-		System.out.println("Player age: " + age);
+	public int getAge(){
+		return age;
 	}
 	
 	public void addCard(int card){
@@ -36,5 +36,16 @@ public class Player {
 			System.out.print(card + ", ");
 		}
 		System.out.println();
+		System.out.println();
+	}
+	
+	public int getPoints(){
+		int point = 0;
+		for(int card:cards){
+			if(card != -2){
+				point+= card;
+			}
+		}
+		return point;
 	}
 }

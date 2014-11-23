@@ -1,6 +1,5 @@
 
 public class Console {
-	private String name = null;
 	
 	public void print(String str){
 		System.out.println(str);
@@ -8,8 +7,10 @@ public class Console {
 	
 	public String getName()
 	throws java.io.IOException{
+		String name;
 		System.out.print("What is your name?: ");
 		name = getInput();
+		
 		if(name.trim() == null){
 			return getName();
 		}else{
@@ -20,9 +21,10 @@ public class Console {
 	public int getAge()
 	throws java.io.IOException{
 		int age;
+		
 		System.out.print("How old are you? (0 - 100): ");
 		try { 
-			age = Integer.parseInt(getInput().trim());
+			age = Integer.parseInt(getInput());
 	    } catch(NumberFormatException e) { 
 	        return getAge();
 	    }
@@ -38,17 +40,21 @@ public class Console {
 	throws java.io.IOException{
 		char ch[] = new char[20];
 		int i = 0;
+		
 		while(i == 0 || ch[i-1] != '\n' && i < ch.length){
 			ch[i] = (char) System.in.read();
 			i ++;
 		}
+		
 		String input = String.valueOf(ch);
 		if(ch[0] == '\n'){
 			return "Next";
 		}else if(input.trim().equalsIgnoreCase("x") || input.trim().equalsIgnoreCase("exit")){
 			return "Exit";
 		}else{
-			return input;
+			return input.trim();
 		}
+		
 	}
+	
 }
