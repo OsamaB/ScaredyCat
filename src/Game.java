@@ -6,8 +6,9 @@ public class Game {
 	//player to handle which player's turn it is
 	int card,scarecrow = 0,turn = 0;
 	String input = null;
+	String output = null;
 	public void start() throws java.io.IOException{
-		console.print("Welcome to Scaredy Cat game!");
+		console.print("Welcome to Scaredy Cat game!😺\n");
 		
 		Player p1 = new Player(console.getName(), console.getAge());
 		Player p2 = new Player(console.getName(), console.getAge());
@@ -22,9 +23,9 @@ public class Game {
 			
 			do{
 				if(turn%2 == 0){
-					console.print(p1.getName() + ", press enter to pick a card");
+					console.print("\n" + p1.getName() + ", press enter to pick a card: ");
 				}else{
-					console.print(p2.getName() + ", press enter to pick a card");
+					console.print("\n" + p2.getName() + ", press enter to pick a card: ");
 				}
 				input = console.getInput();
 				if(input == "Exit"){
@@ -37,18 +38,25 @@ public class Game {
 			
 			if(card == 0){
 				scarecrow++;
-				System.out.println("ScareCrow was picked up! ScareCrows at the table: " + scarecrow + "\n");
+				output = "         _\n       _/_\\_\n      __\\\"/__\n     \"--(_)--\"\n        /_\\\n       //|\\\\\n      \"` | `\"\n       __|__";
+				console.print(output);
+				console.print("\nScarecrow was picked up! Scarecrows at the table: " + scarecrow + "\n");
 			}else if(card == -1){
-				System.out.println("Return your cards" + "\n");
+				if(turn%2 == 0){
+					output = "\n      /\\_/\\\n /\\  / o o \\\n//\\\\ \\~(*)~/\n`  \\/   ^ /\n   | \\|| ||\n   \\ '|| ||\n    \\)()-())\n" + p1.getName() + ", return all your cards to the deck!\n";
+				}else{
+					output = "\n      /\\_/\\\n /\\  / o o \\\n//\\\\ \\~(*)~/\n`  \\/   ^ /\n   | \\|| ||\n   \\ '|| ||\n    \\)()-())\n" + p2.getName() + ", return all your cards to the deck!\n";
+				}
+				console.print(output);
 			}else{
+				output = "\n         .-.\n        (. .)__,')\n        / V  " + card + "   )\n        \\  (   \\/\n         `._`._ \\\n      =====<<==`'====\n\n";
+				console.print(output);
 				if(turn%2 == 0){
 					p1.addCard(card);
-					console.print(p1.getName() + "'s cards:");
-					p1.printCards();
+					console.print(p1.getName() + "'s cards: " + p1.getCards());
 				}else{
 					p2.addCard(card);
-					console.print(p2.getName() + "'s cards:");
-					p2.printCards();
+					console.print(p2.getName() + "'s cards: " + p2.getCards());
 				}
 			}
 			
@@ -57,9 +65,9 @@ public class Game {
 		
 		//Who won?
 		if(p1.getPoints() > p2.getPoints()){
-			console.print(p1.getName() + " won the game!");
+			console.print("\n♛" + p1.getName() + " won the game!♛");
 		}else if(p1.getPoints() < p2.getPoints()){
-			console.print(p2.getName() + " won the game!");
+			console.print("\n♛" + p2.getName() + " won the game!♛");
 		}else{
 			console.print("Draw!");
 		}
