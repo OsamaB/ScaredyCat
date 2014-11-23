@@ -5,6 +5,7 @@ public class Game {
 	//Card to get up a card from the deck, scarecrow to see how many scarecrows picked up,
 	//player to handle which player's turn it is
 	int card,scarecrow = 0,turn = 0;
+	String input = null;
 	public void start() throws java.io.IOException{
 		console.print("Welcome to Scaredy Cat game!");
 		
@@ -18,15 +19,16 @@ public class Game {
 		
 		ch.shuffleCards();
 		while(scarecrow < 6){
-			if(turn%2 == 0){
-				console.print(p1.getName() + ", press enter to pick a card");
-			}else{
-				console.print(p2.getName() + ", press enter to pick a card");
-			}
 			
-			if(console.getInput() == "Next"){
-				card = ch.pickCard();
-			}
+			do{
+				if(turn%2 == 0){
+					console.print(p1.getName() + ", press enter to pick a card");
+				}else{
+					console.print(p2.getName() + ", press enter to pick a card");
+				}
+				input = console.getInput();
+			}while(input != "Next");
+			card = ch.pickCard();
 			
 			if(card == 0){
 				scarecrow++;
@@ -50,6 +52,7 @@ public class Game {
 			turn++;
 		}
 		
+		//Who won?
 		if(p1.getPoints() > p2.getPoints()){
 			console.print(p1.getName() + " won the game!");
 		}else if(p1.getPoints() < p2.getPoints()){
@@ -60,4 +63,4 @@ public class Game {
 		
 	}//start()
 	
-}//Class
+}//Game
