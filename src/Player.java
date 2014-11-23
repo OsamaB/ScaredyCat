@@ -35,8 +35,7 @@ public class Player {
 		for(int card:cards){
 			System.out.print(card + ", ");
 		}
-		System.out.println();
-		System.out.println();
+		System.out.println("\n");
 	}
 	
 	public int getPoints(){

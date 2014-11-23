@@ -27,16 +27,17 @@ public class Game {
 					console.print(p2.getName() + ", press enter to pick a card");
 				}
 				input = console.getInput();
+				if(input == "Exit"){
+					System.exit(0);
+				}
 			}while(input != "Next");
 			card = ch.pickCard();
 			
 			if(card == 0){
 				scarecrow++;
-				System.out.println("ScareCrow was picked up! ScareCrows at the table: " + scarecrow);
-				System.out.println();
+				System.out.println("ScareCrow was picked up! ScareCrows at the table: " + scarecrow + "\n");
 			}else if(card == -1){
-				System.out.println("Return your cards");
-				System.out.println();
+				System.out.println("Return your cards" + "\n");
 			}else{
 				if(turn%2 == 0){
 					p1.addCard(card);
