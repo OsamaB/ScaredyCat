@@ -2,7 +2,7 @@
 public class Console {
 	
 	public void print(String str){
-		System.out.println(str);
+		System.out.print(str);
 	}
 	
 	public String getName()

@@ -31,13 +31,15 @@ public class Player {
 		}
 	}
 	
-	public void printCards(){
+	public String getCards(){
+		String theCards = new String("");
 		for(int card:cards){
 			if(card != -2){
-				System.out.print(card + ", ");
+				theCards = theCards.concat(card + ", ");
 			}
 		}
-		System.out.println("\n");
+		theCards = theCards.concat("\n");
+		return theCards;
 	}
 	
 	public int getPoints(){
