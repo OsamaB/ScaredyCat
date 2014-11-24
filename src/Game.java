@@ -7,7 +7,7 @@ public class Game {
 		//player to handle which player's turn it is
 		int card, scarecrow = 0, turn = 0;
 		String input;
-		console.print("Welcome to Scaredy Cat game!😺\n");
+		console.welcome();
 		
 		Player p1 = new Player(console.getName(), console.getAge());
 		Player p2 = new Player(console.getName(), console.getAge());
@@ -34,19 +34,20 @@ public class Game {
 				}
 			}while(input != "Next");
 			card = ch.pickCard();
-			
-			if(card == 0){
+			if(card == 0){ // 1/6th Piece of the scarecrow
 				scarecrow++;
-				console.print("         _\n       _/_\\_\n      __\\\"/__\n     \"--(_)--\"\n        /_\\\n       //|\\\\\n      \"` | `\"\n       __|__");
-				
+				console.print("         _\n       _/_\\_\n      __\\\"/__\n     \"--(_)--\"\n        /_\\\n       //|\\\\\n      \"` | `\"\n       __|__");	
 				console.print("\nScarecrow was picked up! Scarecrows at the table: " + scarecrow + "\n");
 			}else if(card == -1){
-				if(turn%2 == 0){
+				if(turn%2 == 0){ // Cat-cards
 					console.print("\n      /\\_/\\\n /\\  / o o \\\n//\\\\ \\~(*)~/\n`  \\/   ^ /\n   | \\|| ||\n   \\ '|| ||\n    \\)()-())\n" + p1.getName() + ", return all your cards to the deck!\n");
+					ch.resetCards(p1.resetCards());
+					
 				}else{
 					console.print("\n      /\\_/\\\n /\\  / o o \\\n//\\\\ \\~(*)~/\n`  \\/   ^ /\n   | \\|| ||\n   \\ '|| ||\n    \\)()-())\n" + p2.getName() + ", return all your cards to the deck!\n");
+					ch.resetCards(p2.resetCards());
 				}
-			}else{
+			}else{ // The bird-cards
 				console.print("\n         .-.\n        (. .)__,')\n        / V  " + card + "   )\n        \\  (   \\/\n         `._`._ \\\n      =====<<==`'====\n\n");
 				if(turn%2 == 0){
 					p1.addCard(card);

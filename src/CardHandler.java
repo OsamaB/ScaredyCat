@@ -61,11 +61,17 @@ public class CardHandler {
 		}
 	}
 	
+/* GET CARDS FOR BUG-TESTING!
 	public void getCards(){
-		for(int i = 0;i<deck.length;i++){
-			System.out.println("index: " + i + ", Value: " + deck[i]);
+		String theCards = new String("");
+		for(int card:deck){
+				theCards = theCards.concat(card + ", ");
 		}
+		theCards = theCards.substring(0, theCards.length()-2);
+		theCards = theCards.concat("\n");
+		System.out.println(theCards);
 	}
+	*/
 	
 	public int pickCard(){
 		card = 0;
@@ -77,5 +83,19 @@ public class CardHandler {
 			}
 		}
 		return card;
+	}
+	
+	public void resetCards(int[] hand){
+		deck[0] = -1; // Return cat-card.
+		for(int i = 0;i<hand.length;i++){
+			if(hand[i] != -2){
+				for(int j = 1; j < deck.length; j++){
+					if(deck[j] == -2){
+						deck[j] = hand[i];
+					}
+				}
+			}
+		}
+		shuffleCards();
 	}
 }

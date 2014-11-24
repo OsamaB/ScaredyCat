@@ -43,6 +43,19 @@ public class Player {
 		return theCards;
 	}
 	
+	public int[] resetCards(){
+		int[] hand = new int[24];
+		for(int i = 0;i<cards.length;i++){
+			if(cards[i] != -2){
+				hand[i] = cards[i];
+				cards[i] = -2;
+			}else{
+				hand[i] = -2;
+			}
+		}
+		return hand;
+	}
+	
 	public int getPoints(){
 		int point = 0;
 		for(int card:cards){

@@ -1,43 +1,58 @@
+public class Console
+{
 
-public class Console {
-	
 	private String name;
 	private int player = 1;
-	
-	public void print(String str){
+
+	public void print(String str)
+	{
 		System.out.print(str);
 	}
-	
-	public String getName()
-	throws java.io.IOException{
+
+	public void welcome()
+	{
+		print("Welcome to Scaredy Cat game!😺\n");
+	}
+
+	public String getName() throws java.io.IOException
+	{
 		System.out.print("Player" + player + ", what is your name?: ");
 		name = getInput();
-		
-		if(name.equals("") || name.equals("Next")){
+
+		if (name.equals("") || name.equals("Next"))
+		{
 			return getName();
-		}else{
+		}
+		else
+		{
 			player++;
 			return name;
 		}
 	}
-	
-	public int getAge()
-	throws java.io.IOException{
+
+	public int getAge() throws java.io.IOException
+	{
 		int age;
-		System.out.print(name +", how old are you? (0 - 100): ");
-		try { 
+		System.out.print(name + ", how old are you? (0 - 100): ");
+		try
+		{
 			age = Integer.parseInt(getInput());
-	    } catch(NumberFormatException e) { 
-	        return getAge();
-	    }
-		
-		if(age >= 0 && age <= 100){
+		}
+		catch (NumberFormatException e)
+		{
+			return getAge();
+		}
+
+		if (age >= 0 && age <= 100)
+		{
 			return age;
-		}else{
+		}
+		else
+		{
 			return getAge();
 		}
 	}
-	
+
 	public String getInput()
 	throws java.io.IOException{
 		char ch[] = new char[20];
@@ -60,5 +75,4 @@ public class Console {
 		}
 		
 	}
-	
 }
