@@ -2,14 +2,13 @@ public class Game
 {
 	public void start() throws java.io.IOException
 	{
-		CardHandler ch = new CardHandler(12, 10, 8, 4, 4, 2);// Send how many of
-																// each card
-																// should be
-																// used
+		// Send how many of each card should be used
+		CardHandler ch = new CardHandler(12, 10, 8, 4, 4, 2);
 		Console console = new Console();
-		// Card to get up a card from the deck, scarecrow to see how many
+
+		// Card, to get up a card from the deck, scarecrow to see how many
 		// scarecrows picked up,
-		// player to handle which player's turn it is
+		// turn to handle which player's turn it is
 		int card, scarecrow = 0, turn = 0;
 		String input;
 		console.welcome();
@@ -48,18 +47,19 @@ public class Game
 					start();
 				}
 			}
+
 			while (input != "Next");
 			card = ch.pickCard();
-			if (card == 0)
-			{ // 1/6th Piece of the scarecrow
+			if (card == 0)// Scarecrow-card
+			{
 				scarecrow++;
 				console.print("         _\n       _/_\\_\n      __\\\"/__\n     \"--(_)--\"\n        /_\\\n       //|\\\\\n      \"` | `\"\n       __|__");
 				console.print("\nScarecrow was picked up! Scarecrows at the table: " + scarecrow + "\n");
 			}
-			else if (card == -1)
+			else if (card == -1) // Cat-card
 			{
 				if (turn % 2 == 0)
-				{ // Cat-cards
+				{
 					console.print("\n      /\\_/\\\n /\\  / o o \\\n//\\\\ \\~(*)~/\n`  \\/   ^ /\n   | \\|| ||\n   \\ '|| ||\n    \\)()-())\n" + p1.getName()
 							+ ", return all your cards to the deck!\n");
 					ch.resetCards(p1.resetCards());
@@ -73,7 +73,8 @@ public class Game
 				}
 			}
 			else
-			{ // The bird-cards
+			// Bird card(1-6)
+			{
 				console.print("\n         .-.\n        (. .)__,')\n        / V  " + card + "   )\n        \\  (   \\/\n         `._`._ \\\n      =====<<==`'====\n\n");
 				if (turn % 2 == 0)
 				{
