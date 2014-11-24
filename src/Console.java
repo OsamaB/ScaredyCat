@@ -2,7 +2,7 @@
 public class Console {
 	
 	private String name;
-	private int numberOfPlayers = 1;
+	private int player = 1;
 	
 	public void print(String str){
 		System.out.print(str);
@@ -10,13 +10,13 @@ public class Console {
 	
 	public String getName()
 	throws java.io.IOException{
-		System.out.print("Player" + numberOfPlayers + ", what is your name?: ");
+		System.out.print("Player" + player + ", what is your name?: ");
 		name = getInput();
 		
 		if(name.equals("") || name.equals("Next")){
 			return getName();
 		}else{
-			numberOfPlayers++;
+			player++;
 			return name;
 		}
 	}
