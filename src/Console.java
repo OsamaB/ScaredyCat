@@ -1,19 +1,22 @@
 
 public class Console {
 	
+	private String name;
+	private int player = 1;
+	
 	public void print(String str){
 		System.out.print(str);
 	}
 	
 	public String getName()
 	throws java.io.IOException{
-		String name;
-		System.out.print("What is your name?: ");
+		System.out.print("Player" + player + ", what is your name?: ");
 		name = getInput();
 		
-		if(name == null){
+		if(name.equals("") || name.equals("Next")){
 			return getName();
 		}else{
+			player++;
 			return name;
 		}
 	}
@@ -21,8 +24,7 @@ public class Console {
 	public int getAge()
 	throws java.io.IOException{
 		int age;
-		
-		System.out.print("How old are you? (0 - 100): ");
+		System.out.print(name +", how old are you? (0 - 100): ");
 		try { 
 			age = Integer.parseInt(getInput());
 	    } catch(NumberFormatException e) { 
