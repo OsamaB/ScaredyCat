@@ -5,8 +5,8 @@ public class Game {
 		Console console = new Console();
 		//Card to get up a card from the deck, scarecrow to see how many scarecrows picked up,
 		//player to handle which player's turn it is
-		int card,scarecrow = 0,turn = 0;
-		String input, output;
+		int card, scarecrow = 0, turn = 0;
+		String input;
 		console.print("Welcome to Scaredy Cat game!😺\n");
 		
 		Player p1 = new Player(console.getName(), console.getAge());
@@ -37,19 +37,17 @@ public class Game {
 			
 			if(card == 0){
 				scarecrow++;
-				output = "         _\n       _/_\\_\n      __\\\"/__\n     \"--(_)--\"\n        /_\\\n       //|\\\\\n      \"` | `\"\n       __|__";
-				console.print(output);
+				console.print("         _\n       _/_\\_\n      __\\\"/__\n     \"--(_)--\"\n        /_\\\n       //|\\\\\n      \"` | `\"\n       __|__");
+				
 				console.print("\nScarecrow was picked up! Scarecrows at the table: " + scarecrow + "\n");
 			}else if(card == -1){
 				if(turn%2 == 0){
-					output = "\n      /\\_/\\\n /\\  / o o \\\n//\\\\ \\~(*)~/\n`  \\/   ^ /\n   | \\|| ||\n   \\ '|| ||\n    \\)()-())\n" + p1.getName() + ", return all your cards to the deck!\n";
+					console.print("\n      /\\_/\\\n /\\  / o o \\\n//\\\\ \\~(*)~/\n`  \\/   ^ /\n   | \\|| ||\n   \\ '|| ||\n    \\)()-())\n" + p1.getName() + ", return all your cards to the deck!\n");
 				}else{
-					output = "\n      /\\_/\\\n /\\  / o o \\\n//\\\\ \\~(*)~/\n`  \\/   ^ /\n   | \\|| ||\n   \\ '|| ||\n    \\)()-())\n" + p2.getName() + ", return all your cards to the deck!\n";
+					console.print("\n      /\\_/\\\n /\\  / o o \\\n//\\\\ \\~(*)~/\n`  \\/   ^ /\n   | \\|| ||\n   \\ '|| ||\n    \\)()-())\n" + p2.getName() + ", return all your cards to the deck!\n");
 				}
-				console.print(output);
 			}else{
-				output = "\n         .-.\n        (. .)__,')\n        / V  " + card + "   )\n        \\  (   \\/\n         `._`._ \\\n      =====<<==`'====\n\n";
-				console.print(output);
+				console.print("\n         .-.\n        (. .)__,')\n        / V  " + card + "   )\n        \\  (   \\/\n         `._`._ \\\n      =====<<==`'====\n\n");
 				if(turn%2 == 0){
 					p1.addCard(card);
 					console.print(p1.getName() + "'s cards: " + p1.getCards());
