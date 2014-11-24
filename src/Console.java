@@ -54,25 +54,34 @@ public class Console
 	}
 
 	public String getInput()
-	throws java.io.IOException{
+			throws java.io.IOException
+	{
 		char ch[] = new char[20];
 		int i = 0;
-		
-		while(i == 0 || ch[i-1] != '\n' && i < ch.length){
+
+		while (i == 0 || ch[i - 1] != '\n' && i < ch.length)
+		{
 			ch[i] = (char) System.in.read();
-			i ++;
+			i++;
 		}
-		
+
 		String input = String.valueOf(ch).trim();
-		if(ch[0] == '\n'){
+		if (ch[0] == '\n')
+		{
 			return "Next";
-		}else if(input.equalsIgnoreCase("x") || input.equalsIgnoreCase("exit")){
+		}
+		else if (input.equalsIgnoreCase("x") || input.equalsIgnoreCase("exit"))
+		{
 			return "Exit";
-		}else if(input.equalsIgnoreCase("r") || input.equalsIgnoreCase("restart")){
+		}
+		else if (input.equalsIgnoreCase("r") || input.equalsIgnoreCase("restart"))
+		{
 			return "Restart";
-		}else{
+		}
+		else
+		{
 			return input;
 		}
-		
+
 	}
 }
