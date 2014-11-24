@@ -39,7 +39,7 @@ public class Game {
 				scarecrow++;
 				System.out.println("ScareCrow was picked up! ScareCrows at the table: " + scarecrow + "\n");
 			}else if(card == -1){
-				System.out.println("Return your cards" + "\n");
+				System.out.println("You picked a cat! Return your cards.." + "\n");
 			}else{
 				if(turn%2 == 0){
 					p1.addCard(card);
