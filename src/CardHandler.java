@@ -5,7 +5,11 @@ public class CardHandler {
 	
 	//Construct how many of each bird card should be used in the deck
 	CardHandler(int a, int b, int c, int d, int e, int f){
-
+		
+		if(a+b+c+d+e+f > 40){ //If to many cards(exit the program)
+			System.out.println("Error in CardHandler, to many Cards!");
+			System.exit(0);
+		}
 		//3 cat-cards (-1)
 		for(int i = 0;i<3;i++){
 			deck[card] = -1;

@@ -1,7 +1,7 @@
 
 public class Game {
 	public void start() throws java.io.IOException{
-		CardHandler ch = new CardHandler(12,10,8,4,4,2);
+		CardHandler ch = new CardHandler(12,10,8,4,4,2);//Send how many of each card should be used
 		Console console = new Console();
 		//Card to get up a card from the deck, scarecrow to see how many scarecrows picked up,
 		//player to handle which player's turn it is
