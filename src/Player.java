@@ -38,6 +38,7 @@ public class Player {
 				theCards = theCards.concat(card + ", ");
 			}
 		}
+		theCards = theCards.substring(0, theCards.length()-2);
 		theCards = theCards.concat("\n");
 		return theCards;
 	}
