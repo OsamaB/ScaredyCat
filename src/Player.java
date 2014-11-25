@@ -3,7 +3,7 @@ public class Player
 
 	private String name;
 	private int age;
-	private int[] cards = new int[24];
+	private int[] cards = new int[40];
 
 	Player(String name, int age)
 	{
@@ -55,7 +55,7 @@ public class Player
 
 	public int[] resetCards()
 	{
-		int[] hand = new int[24];
+		int[] hand = new int[cards.length];
 		for (int i = 0; i < cards.length; i++)
 		{
 			if (cards[i] != -2)

@@ -117,6 +117,7 @@ public class CardHandler
 					if (deck[j] == -2)
 					{
 						deck[j] = hand[i];
+						break;
 					}
 				}
 			}
