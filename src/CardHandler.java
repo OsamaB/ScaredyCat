@@ -7,7 +7,7 @@ public class CardHandler
 	CardHandler(int a, int b, int c, int d, int e, int f)
 	{
 
-		if (a + b + c + d + e + f > 40)
+		if (a + b + c + d + e + f != 40)
 		{ // If to many cards(exit the program)
 			System.out.println("Error in CardHandler, to many Cards!");
 			System.exit(0);
@@ -78,15 +78,13 @@ public class CardHandler
 	 */
 	public void getCards()
 	{
-		String theCards = new
-				String("");
+		String theCards = new String("");
 		for (int card : deck)
 		{
 			theCards = theCards.concat(card + ", ");
 		}
 		theCards = theCards.substring(0, theCards.length() - 2);
-		theCards =
-				theCards.concat("\n");
+		theCards = theCards.concat("\n");
 		System.out.println(theCards);
 	}
 

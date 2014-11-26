@@ -47,7 +47,6 @@ public class Game
 					start();
 				}
 			}
-
 			while (input != "Next");
 			card = ch.pickCard();
 			if (card == 0)// Scarecrow-card
