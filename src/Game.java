@@ -9,7 +9,8 @@ public class Game
 		// Card, to get up a card from the deck, scarecrow to see how many
 		// scarecrows picked up,
 		// turn to handle which player's turn it is
-		int card, scarecrow = 0, turn = 0;
+		int scarecrow = 0, turn = 0;
+		Card card;
 		String input;
 
 		console.print("Welcome to Scaredy Cat game!😺\n");
@@ -51,14 +52,14 @@ public class Game
 			while (input != "Next");
 
 			card = ch.pickCard();
-			if (card == 0) // Scarecrow-card
+			if (card == Card.SCARECROW) // Scarecrow-card
 			{
 				scarecrow++;
 				console.print("         _\n       _/_\\_\n      __\\\"/__\n     \"--(_)--\"\n        "
 						+ "/_\\\n       //|\\\\\n      \"` | `\"\n       __|__");
 				console.print("\nScarecrow was picked up! Scarecrows at the table: " + scarecrow + "\n");
 			}
-			else if (card == -1) // Cat-card
+			else if (card == Card.CAT) // Cat-card
 			{
 				if (turn % 2 == 0)
 				{
@@ -79,7 +80,7 @@ public class Game
 			else
 			// Bird card(1-6)
 			{
-				console.print("\n         .-.\n        (. .)__,')\n        / V  " + card + "   )\n        "
+				console.print("\n         .-.\n        (. .)__,')\n        / V  " + card.getValue() + "   )\n        "
 						+ "\\  (   \\/\n         `._`._ \\\n      =====<<==`'====\n\n");
 				if (turn % 2 == 0)
 				{

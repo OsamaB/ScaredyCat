@@ -1,6 +1,6 @@
 public class CardHandler
 {
-	private int[] deck = new int[49];
+	private Card[] deck = new Card[49];
 	private int card = 0;
 
 	// Construct how many of each bird card should be used in the deck
@@ -15,49 +15,49 @@ public class CardHandler
 		// 3 cat-cards (-1)
 		for (int i = 0; i < 3; i++)
 		{
-			deck[card] = -1;
+			deck[card] = Card.CAT;
 			card++;
 		}
 		// 6 scarecrow cards(0)
 		for (int i = 0; i < 6; i++)
 		{
-			deck[card] = 0;
+			deck[card] = Card.SCARECROW;
 			card++;
 		}
 		// a bird cards with 1 bird
 		for (int i = 0; i < a; i++)
 		{
-			deck[card] = 1;
+			deck[card] = Card.BIRD1;
 			card++;
 		}
 		// b bird cards with 2 birds
 		for (int i = 0; i < b; i++)
 		{
-			deck[card] = 2;
+			deck[card] = Card.BIRD2;
 			card++;
 		}
 		// c bird cards with 3 birds
 		for (int i = 0; i < c; i++)
 		{
-			deck[card] = 3;
+			deck[card] = Card.BIRD3;
 			card++;
 		}
 		// d bird cards with 4 birds
 		for (int i = 0; i < d; i++)
 		{
-			deck[card] = 4;
+			deck[card] = Card.BIRD4;
 			card++;
 		}
 		// e bird cards with 5 birds
 		for (int i = 0; i < e; i++)
 		{
-			deck[card] = 5;
+			deck[card] = Card.BIRD5;
 			card++;
 		}
 		// f bird cards with 6 birds
 		for (int i = 0; i < f; i++)
 		{
-			deck[card] = 6;
+			deck[card] = Card.BIRD6;
 			card++;
 		}
 	}
@@ -67,7 +67,7 @@ public class CardHandler
 		for (int i = 0; i < deck.length; i++)
 		{
 			int otherCard = (int) (Math.random() * deck.length);
-			int temporary = deck[i];
+			Card temporary = deck[i];
 			deck[i] = deck[otherCard];
 			deck[otherCard] = temporary;
 		}
@@ -79,7 +79,7 @@ public class CardHandler
 	public void getCards()
 	{
 		String theCards = new String("");
-		for (int card : deck)
+		for (Card card : deck)
 		{
 			theCards = theCards.concat(card + ", ");
 		}
@@ -88,31 +88,31 @@ public class CardHandler
 		System.out.println(theCards);
 	}
 
-	public int pickCard()
+	public Card pickCard()
 	{
-		card = 0;
+		Card returnCard = Card.EMPTYCARD;
 		for (int i = 0; i < deck.length; i++)
 		{
-			if (deck[i] != -2)
+			if (deck[i] != Card.EMPTYCARD)
 			{
-				card = deck[i];
-				deck[i] = -2;
+				returnCard = deck[i];
+				deck[i] = Card.EMPTYCARD;
 				break;
 			}
 		}
-		return card;
+		return returnCard;
 	}
 
-	public void resetCards(int[] hand)
+	public void resetCards(Card[] hand)
 	{
-		deck[0] = -1; // Return cat-card.
+		deck[0] = Card.CAT; // Return cat-card.
 		for (int i = 0; i < hand.length; i++)
 		{
-			if (hand[i] != -2)
+			if (hand[i] != Card.EMPTYCARD)
 			{
 				for (int j = 1; j < deck.length; j++)
 				{
-					if (deck[j] == -2)
+					if (deck[j] == Card.EMPTYCARD)
 					{
 						deck[j] = hand[i];
 						break;

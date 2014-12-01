@@ -3,7 +3,7 @@ public class Player
 
 	private String name;
 	private int age;
-	private int[] cards = new int[40];
+	private Card[] cards = new Card[40];
 
 	Player(String name, int age)
 	{
@@ -12,7 +12,7 @@ public class Player
 		// Make all "card-spots" empty
 		for (int i = 0; i < cards.length; i++)
 		{
-			cards[i] = -2;
+			cards[i] = Card.EMPTYCARD;
 		}
 	}
 
@@ -26,11 +26,11 @@ public class Player
 		return age;
 	}
 
-	public void addCard(int card)
+	public void addCard(Card card)
 	{
 		for (int i = 0; i < cards.length; i++)
 		{
-			if (cards[i] == -2)
+			if (cards[i] == Card.EMPTYCARD)
 			{
 				cards[i] = card;
 				break;
@@ -41,11 +41,11 @@ public class Player
 	public String getCards()
 	{
 		String theCards = new String("");
-		for (int card : cards)
+		for (Card card : cards)
 		{
-			if (card != -2)
+			if (card != Card.EMPTYCARD)
 			{
-				theCards = theCards.concat(card + ", ");
+				theCards = theCards.concat(card.getValue() + ", ");
 			}
 		}
 		theCards = theCards.substring(0, theCards.length() - 2);
@@ -53,19 +53,19 @@ public class Player
 		return theCards;
 	}
 
-	public int[] resetCards()
+	public Card[] resetCards()
 	{
-		int[] hand = new int[cards.length];
+		Card[] hand = new Card[cards.length];
 		for (int i = 0; i < cards.length; i++)
 		{
-			if (cards[i] != -2)
+			if (cards[i] != Card.EMPTYCARD)
 			{
 				hand[i] = cards[i];
-				cards[i] = -2;
+				cards[i] = Card.EMPTYCARD;
 			}
 			else
 			{
-				hand[i] = -2;
+				hand[i] = Card.EMPTYCARD;
 			}
 		}
 		return hand;
@@ -74,11 +74,11 @@ public class Player
 	public int getPoints()
 	{
 		int point = 0;
-		for (int card : cards)
+		for (Card card : cards)
 		{
-			if (card != -2)
+			if (card != Card.EMPTYCARD)
 			{
-				point += card;
+				point += card.getValue();
 			}
 		}
 		return point;
