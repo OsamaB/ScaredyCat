@@ -2,8 +2,8 @@ public class Game
 {
 	public void start() throws java.io.IOException
 	{
-		// Send how many of each card should be used
-		CardHandler ch = new CardHandler(12, 10, 8, 4, 4, 2);
+		// Send how many of each card that should be used
+		CardHandler ch = new CardHandler(12, 10, 8, 4, 4, 2); // Totally 40 cards
 		Console console = new Console();
 
 		// Card, to get up a card from the deck, scarecrow to see how many
@@ -11,7 +11,8 @@ public class Game
 		// turn to handle which player's turn it is
 		int card, scarecrow = 0, turn = 0;
 		String input;
-		console.welcome();
+
+		console.print("Welcome to Scaredy Cat game!😺\n");
 
 		Player p1 = new Player(console.getName(), console.getAge());
 		Player p2 = new Player(console.getName(), console.getAge());
@@ -27,7 +28,6 @@ public class Game
 		{
 			do
 			{
-
 				if (turn % 2 == 0)
 				{
 					console.print("\n" + p1.getName() + ", press enter to pick a card: ");
@@ -36,6 +36,7 @@ public class Game
 				{
 					console.print("\n" + p2.getName() + ", press enter to pick a card: ");
 				}
+
 				input = console.getInput();
 				if (input == "Exit")
 				{
@@ -48,25 +49,29 @@ public class Game
 				}
 			}
 			while (input != "Next");
+
 			card = ch.pickCard();
-			if (card == 0)// Scarecrow-card
+			if (card == 0) // Scarecrow-card
 			{
 				scarecrow++;
-				console.print("         _\n       _/_\\_\n      __\\\"/__\n     \"--(_)--\"\n        /_\\\n       //|\\\\\n      \"` | `\"\n       __|__");
+				console.print("         _\n       _/_\\_\n      __\\\"/__\n     \"--(_)--\"\n        "
+						+ "/_\\\n       //|\\\\\n      \"` | `\"\n       __|__");
 				console.print("\nScarecrow was picked up! Scarecrows at the table: " + scarecrow + "\n");
 			}
 			else if (card == -1) // Cat-card
 			{
 				if (turn % 2 == 0)
 				{
-					console.print("\n      /\\_/\\\n /\\  / o o \\\n//\\\\ \\~(*)~/\n`  \\/   ^ /\n   | \\|| ||\n   \\ '|| ||\n    \\)()-())\n" + p1.getName()
+					console.print("\n      /\\_/\\\n /\\  / o o \\\n//\\\\ \\~(*)~/\n`  \\/   ^ /\n   "
+							+ "| \\|| ||\n   \\ '|| ||\n    \\)()-())\n" + p1.getName()
 							+ ", return all your cards to the deck!\n");
 					ch.resetCards(p1.resetCards());
 
 				}
 				else
 				{
-					console.print("\n      /\\_/\\\n /\\  / o o \\\n//\\\\ \\~(*)~/\n`  \\/   ^ /\n   | \\|| ||\n   \\ '|| ||\n    \\)()-())\n" + p2.getName()
+					console.print("\n      /\\_/\\\n /\\  / o o \\\n//\\\\ \\~(*)~/\n`  \\/   ^ /\n   "
+							+ "| \\|| ||\n   \\ '|| ||\n    \\)()-())\n" + p2.getName()
 							+ ", return all your cards to the deck!\n");
 					ch.resetCards(p2.resetCards());
 				}
@@ -74,7 +79,8 @@ public class Game
 			else
 			// Bird card(1-6)
 			{
-				console.print("\n         .-.\n        (. .)__,')\n        / V  " + card + "   )\n        \\  (   \\/\n         `._`._ \\\n      =====<<==`'====\n\n");
+				console.print("\n         .-.\n        (. .)__,')\n        / V  " + card + "   )\n        "
+						+ "\\  (   \\/\n         `._`._ \\\n      =====<<==`'====\n\n");
 				if (turn % 2 == 0)
 				{
 					p1.addCard(card);
@@ -94,12 +100,14 @@ public class Game
 		if (p1.getPoints() > p2.getPoints())
 		{
 			console.print("\n♛" + p1.getName() + " won the game!♛");
-			console.print("\nWith " + p1.getPoints() + " points, " + p2.getName() + " had " + p2.getPoints() + " points");
+			console.print("\nWith " + p1.getPoints() + " points, " + p2.getName() + " had " +
+					p2.getPoints() + " points");
 		}
 		else if (p1.getPoints() < p2.getPoints())
 		{
 			console.print("\n♛" + p2.getName() + " won the game!♛");
-			console.print("\nWith " + p2.getPoints() + " points, " + p1.getName() + " had " + p1.getPoints() + " points");
+			console.print("\nWith " + p2.getPoints() + " points, " + p1.getName() + " had " +
+					p1.getPoints() + " points");
 		}
 		else
 		{

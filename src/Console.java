@@ -1,20 +1,14 @@
 public class Console
 {
-
 	private String name;
 	private int player = 1;
 
-	public void print(String str)
+	public void print(String str)  // Print out stuff
 	{
 		System.out.print(str);
 	}
 
-	public void welcome()
-	{
-		print("Welcome to Scaredy Cat game!😺\n");
-	}
-
-	public String getName() throws java.io.IOException
+	public String getName() throws java.io.IOException // Prompt user for name
 	{
 		System.out.print("Player" + player + ", what is your name?: ");
 		name = getInput();
@@ -28,9 +22,9 @@ public class Console
 			player++;
 			return name;
 		}
-	}
+	} // getName()
 
-	public int getAge() throws java.io.IOException
+	public int getAge() throws java.io.IOException // Prompt user for age
 	{
 		int age;
 		System.out.print(name + ", how old are you? (0 - 100): ");
@@ -51,9 +45,9 @@ public class Console
 		{
 			return getAge();
 		}
-	}
+	} // getAge()
 
-	public String getInput()
+	public String getInput() // The input-method
 			throws java.io.IOException
 	{
 		char ch[] = new char[20];
@@ -65,7 +59,7 @@ public class Console
 			i++;
 		}
 
-		String input = String.valueOf(ch).trim();
+		String input = String.valueOf(ch).trim(); // The "Special" commands.
 		if (ch[0] == '\n')
 		{
 			return "Next";
@@ -82,6 +76,5 @@ public class Console
 		{
 			return input;
 		}
-
 	}
 }
