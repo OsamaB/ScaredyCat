@@ -60,19 +60,6 @@ public class CardHandler {
 		}
 	}
 
-	/*
-	 * GET CARDS FOR BUG-TESTING!
-	 */
-	public void getCards() {
-		String theCards = new String("");
-		for (Card card : deck) {
-			theCards = theCards.concat(card + ", ");
-		}
-		theCards = theCards.substring(0, theCards.length() - 2);
-		theCards = theCards.concat("\n");
-		System.out.println(theCards);
-	}
-
 	public Card pickCard() {
 		Card returnCard = Card.EMPTYCARD;
 		for (int i = 0; i < deck.length; i++) {
