@@ -7,6 +7,7 @@ public class Player {
 	Player(String name, int age) {
 		this.name = name;
 		this.age = age;
+		
 		// Make all "card-spots" empty
 		for (int i = 0; i < cards.length; i++) {
 			cards[i] = Card.EMPTYCARD;

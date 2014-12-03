@@ -1,13 +1,13 @@
 public class Game {
 	public void start() throws java.io.IOException {
-		// Send how many of each card that should be used
-		CardHandler ch = new CardHandler(12, 10, 8, 4, 4, 2); // Totally 40
-																// cards
+		// Send how many of each bird-card that should be used
+		// Should be totally 40 cards here i.e 
+		// (1 bird, 2 birds, 3 birds, 4 birds, 5 birds, 6 birds)
+		CardHandler ch = new CardHandler(12, 10, 8, 4, 4, 2); 
 		Console console = new Console();
 
-		// Card, to get up a card from the deck, scarecrow to see how many
-		// scarecrows picked up,
-		// turn to handle which player's turn it is
+		// "scarecrow" is to see how many scarecrows picked up
+		// "turn" is to handle which player's turn it is
 		int scarecrow = 0, turn = 0;
 		Card card;
 		String input;
@@ -16,8 +16,8 @@ public class Game {
 
 		Player p1 = new Player(console.getName(), console.getAge());
 		Player p2 = new Player(console.getName(), console.getAge());
-		// Check if player2 is younger than player1, if true, let player2 start
-		// the game
+		// Check if player2 is younger than player1, if true,
+		// let player2 start the game
 		if (p2.getAge() < p1.getAge()) {
 			turn = 1;
 		}
@@ -43,14 +43,16 @@ public class Game {
 			} while (input != "Next");
 
 			card = ch.pickCard();
-			if (card == Card.SCARECROW) // Scarecrow-card
+			// Scarecrow-card
+			if (card == Card.SCARECROW)
 			{
 				scarecrow++;
 				console.print("         _\n       _/_\\_\n      __\\\"/__\n     \"--(_)--\"\n        "
 						+ "/_\\\n       //|\\\\\n      \"` | `\"\n       __|__");
 				console.print("\nScarecrow was picked up! Scarecrows at the table: "
 						+ scarecrow + "\n");
-			} else if (card == Card.CAT) // Cat-card
+			} else if (card == Card.CAT)
+			// Cat-cards
 			{
 				if (turn % 2 == 0) {
 					console.print("\n      /\\_/\\\n /\\  / o o \\\n//\\\\ \\~(*)~/\n`  \\/   ^ /\n   "
@@ -58,7 +60,6 @@ public class Game {
 							+ p1.getName()
 							+ ", return all your cards to the deck!\n");
 					ch.resetCards(p1.resetCards());
-
 				} else {
 					console.print("\n      /\\_/\\\n /\\  / o o \\\n//\\\\ \\~(*)~/\n`  \\/   ^ /\n   "
 							+ "| \\|| ||\n   \\ '|| ||\n    \\)()-())\n"
@@ -81,7 +82,6 @@ public class Game {
 					console.print(p2.getName() + "'s cards: " + p2.getCards());
 				}
 			}
-
 			turn++;
 		}
 
@@ -97,7 +97,5 @@ public class Game {
 		} else {
 			console.print("Draw!");
 		}
-
-	}// start()
-
-}// Game
+	}
+}

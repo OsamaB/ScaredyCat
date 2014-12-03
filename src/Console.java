@@ -2,12 +2,14 @@ public class Console {
 	private String name;
 	private int player = 1;
 
-	public void print(String str) // Print out stuff
+	// Print out stuff
+	public void print(String str)
 	{
 		System.out.print(str);
 	}
 
-	public String getName() throws java.io.IOException // Prompt user for name
+	// Prompt user for name
+	public String getName() throws java.io.IOException
 	{
 		System.out.print("Player" + player + ", what is your name?: ");
 		name = getInput();
@@ -18,9 +20,10 @@ public class Console {
 			player++;
 			return name;
 		}
-	} // getName()
+	}
 
-	public int getAge() throws java.io.IOException // Prompt user for age
+	// Prompt user for age
+	public int getAge() throws java.io.IOException
 	{
 		int age;
 		System.out.print(name + ", how old are you? (0 - 100): ");
@@ -35,9 +38,10 @@ public class Console {
 		} else {
 			return getAge();
 		}
-	} // getAge()
+	}
 
-	public String getInput() // The input-method
+	// The input-method
+	public String getInput()
 			throws java.io.IOException {
 		char ch[] = new char[20];
 		int i = 0;
@@ -47,7 +51,8 @@ public class Console {
 			i++;
 		}
 
-		String input = String.valueOf(ch).trim(); // The "Special" commands.
+		// The "Special" commands.
+		String input = String.valueOf(ch).trim();
 		if (ch[0] == '\n') {
 			return "Next";
 		} else if (input.equalsIgnoreCase("x")

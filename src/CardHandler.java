@@ -4,8 +4,9 @@ public class CardHandler {
 
 	// Construct how many of each bird card should be used in the deck
 	CardHandler(int a, int b, int c, int d, int e, int f) {
-
-		if (a + b + c + d + e + f != 40) { // If to many cards(exit the program)
+		
+		// If to many cards(exit the program)
+		if (a + b + c + d + e + f != 40) {
 			System.out.println("Error in CardHandler, to many Cards!");
 			System.exit(0);
 		}
@@ -51,6 +52,7 @@ public class CardHandler {
 		}
 	}
 
+	// The shuffle-method for the deck
 	public void shuffleCards() {
 		for (int i = 0; i < deck.length; i++) {
 			int otherCard = (int) (Math.random() * deck.length);
@@ -60,6 +62,7 @@ public class CardHandler {
 		}
 	}
 
+	// The pick-method when a player picks a card from the deck
 	public Card pickCard() {
 		Card returnCard = Card.EMPTYCARD;
 		for (int i = 0; i < deck.length; i++) {
@@ -72,8 +75,10 @@ public class CardHandler {
 		return returnCard;
 	}
 
+	// The reset-method for a players hand (if he/she picks a cat)
 	public void resetCards(Card[] hand) {
-		deck[0] = Card.CAT; // Return cat-card.
+		// Return cat-card.
+		deck[0] = Card.CAT;
 		for (int i = 0; i < hand.length; i++) {
 			if (hand[i] != Card.EMPTYCARD) {
 				for (int j = 1; j < deck.length; j++) {
